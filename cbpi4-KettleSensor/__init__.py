@@ -54,11 +54,10 @@ class KettleSensor(CBPiSensor):
                                 value = int(kettle_heater.power)
 
                         if counter == 0:
-                            if value != 0:
-                                self.value=value
-                                self.log_data(self.value)
-                                self.push_update(self.value)
-                                self.value_old=self.value
+                            self.value=value
+                            self.log_data(self.value)
+                            self.push_update(self.value)
+                            self.value_old=self.value
                             counter = 15
                         else:
                             if value != self.value_old:
