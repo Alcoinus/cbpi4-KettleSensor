@@ -20,7 +20,7 @@ class KettleSensor(CBPiSensor):
     
     def __init__(self, cbpi, id, props):
         super(KettleSensor, self).__init__(cbpi, id, props)
-        self.value = self.value_old = 0
+        self.value = 0
         self.kettle_controller : KettleController = cbpi.kettle
         self.kettle_id=self.props.get("Kettle")
         self.SensorType=self.props.get("Data","TargetTemp")
@@ -52,20 +52,14 @@ class KettleSensor(CBPiSensor):
 #                                logging.info("Instance: {}".format(state))
 #                                logging.info(kettle_heater)
                                 value = int(kettle_heater.power)
+                            else:
+                                value = 0
 
-                        if counter == 0:
+                        if counter == 0 or value != self.value:
                             self.value=value
                             self.log_data(self.value)
                             self.push_update(self.value)
-                            self.value_old=self.value
                             counter = 15
-                        else:
-                            if value != self.value_old:
-                                self.value=value
-                                self.log_data(self.value)
-                                self.push_update(self.value)
-                                self.value_old=self.value
-                                counter = 15
             self.push_update(self.value,False)
             #self.cbpi.ws.send(dict(topic="sensorstate", id=self.id, value=self.value))
             counter -=1
@@ -81,7 +75,7 @@ class FermenterSensor(CBPiSensor):
     
     def __init__(self, cbpi, id, props):
         super(FermenterSensor, self).__init__(cbpi, id, props)
-        self.value = self.value_old = 0
+        self.value = 0
         self.fermenter_controller : FermentationController = cbpi.fermenter
         self.fermenter_id=self.props.get("Fermenter")
         self.SensorType=self.props.get("Data","TargetTemp")
@@ -122,20 +116,12 @@ class FermenterSensor(CBPiSensor):
                             else:
                                 value = 0
 
-                        if counter == 0:
+                        if counter == 0 or value != self.value:
                             self.value=value
                             self.log_data(self.value)
                             self.push_update(self.value)
                             self.value_old=self.value
                             counter = 15
-                        else:
-                            if value != self.value_old:
-                                self.value=value
-                                self.log_data(self.value)
-                                self.value_old=self.value
-                                self.push_update(self.value)
-                                counter = 15
-
             self.push_update(self.value,False)
             #self.cbpi.ws.send(dict(topic="sensorstate", id=self.id, value=self.value))
             counter -=1
