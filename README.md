@@ -9,7 +9,7 @@ The Fermentersonsor will add target temperature to your analytics
 
 or
 
-- sudo pip3 install https://github.com/avollkopf/cbpi4-KettleSensor/archive/main.zip
+- sudo pip3 install https://github.com/Alcoinus/cbpi4-KettleSensor/archive/main.zip
 
 ## Update
 
@@ -17,7 +17,7 @@ or
 
 or
 
-- sudo pip3 install --upgrade https://github.com/avollkopf/cbpi4-KettleSensor/archive/main.zip
+- sudo pip3 install --upgrade https://github.com/Alcoinus/cbpi4-KettleSensor/archive/main.zip
 
 ## Add plugin to CBPi4
 
