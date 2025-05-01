@@ -9,9 +9,9 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(name='cbpi4-KettleSensor',
       version='0.0.6',
       description='CraftBeerPi4 Plugin to add Sensor parameters for your Kettle and Fermenter',
-      author='Alexander Vollkopf',
+      author='Alexander Vollkopf (edited by Felix Theiß)',
       author_email='avollkopf@web.de',
-      url='https://github.com/avollkopf/cbpi4-KettleSensor',
+      url='https://github.com/Alcoinus/cbpi4-KettleSensor',
       include_package_data=True,
       package_data={
         # If any package contains *.txt or *.rst files, include them:
